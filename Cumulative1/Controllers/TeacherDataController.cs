@@ -177,7 +177,6 @@ namespace Cumulative1.Controllers
         /// FORM DATA / POST DATA / REQUEST BODY 
         /// </example>
         [HttpPost]
-        [Route("api/TeacherData/AddTeacher")]
         [EnableCors(origins: "*", methods: "*", headers: "*")]
         public void AddTeacher([FromBody]Teacher NewTeacher)
         {
