@@ -33,7 +33,7 @@ namespace Cumulative1.Controllers
             MySqlConnection Conn = school.AccessDatabase();
 
             //Open the connection between the web server and database
-            Conn.Open();
+                Conn.Open();
 
             //Establish a new command (query) for our database
             MySqlCommand cmd = Conn.CreateCommand();
@@ -209,8 +209,8 @@ namespace Cumulative1.Controllers
         /// </summary>
         /// <param name="id">The ID of the teacher.</param>
         /// <example>POST /api/TeacherData/DeleteTeacher/3</example>
-        [HttpGet]
-        [Route("api/TeacherData/DeleteTeacher/{id}")]
+        [HttpPost]
+        [EnableCors(origins: "*", methods: "*", headers: "*")]
         public void DeleteTeacher(int id)
         {
             //Create an instance of a connection

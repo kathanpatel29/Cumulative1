@@ -59,6 +59,16 @@ namespace Cumulative1.Controllers
             return RedirectToAction("List");
         }
 
+        //GET : /Teacher/DeleteConfirm/{id}
+        public ActionResult DeleteConfirm(int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            Teacher NewTeacher = controller.FindTeacher(id);
+
+
+            return View(NewTeacher);
+        }
+
         //GET : /Teacher/New
         public ActionResult New()
         {
@@ -68,6 +78,12 @@ namespace Cumulative1.Controllers
         [HttpPost]
         public ActionResult Create(string TeacherName, string TeacherFname, string TeacherLname, string EmployeeNumber, DateTime HireDate, decimal Salary)
         {
+            // Check for missing information
+            if (string.IsNullOrEmpty(TeacherFname) || string.IsNullOrEmpty(TeacherLname) || string.IsNullOrEmpty(EmployeeNumber))
+            {
+                ModelState.AddModelError("", "Please fill out all required fields.");
+                return View("New");
+            }
             //Identify that this method is running
             //Identify the inputs provided from the form
 
